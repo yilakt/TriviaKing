@@ -7,7 +7,7 @@ const Header = (props) => {
     return (
         <View style ={styles.header}>
 
-                <Image source={require('../assets/logo_triviaKing.png')} style={{height: 30, width:30}}>
+                <Image source={require('../assets/logo_triviaKing.png')} style={{height: 28, width:28}}>
                 </Image>
                 <Text style={styles.titleText}> {props.title} </Text>
             
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     header: {
         width: '100%',
         flexDirection: 'row',
-        height: 55,
+        height: 45,
         backgroundColor: '#F63B42',
         borderBottomWidth: 1,
         borderBottomColor: '#D1D1D1',

@@ -7,43 +7,62 @@ export default class QuizAction extends React.Component {
     //
     render(){
         return (
-            <View style ={styles.body}> 
-                <TouchableOpacity 
-                    style={styles.textContainer}
-                    onPress = {this.props.startTrivia}>
-                    <Image source={require('../assets/logo_triviaKing.png')} style={{height: 30, width:30}}/>
+            <View style ={styles.container}>
+                <View style={styles.body}>
+                    <TouchableOpacity 
+                        style={styles.imgContainerRed}
+                        onPress = {this.props.setResponseFalse}>
+                        <Image source={require('../assets/xmark.png')} style={{height: 30, width:30}}/>
+                        <Text style={styles.titleText}> FALSE </Text>
                     </TouchableOpacity>
-                <TouchableOpacity 
-                    style={styles.textContainer}
-                    onPress = {this.props.startTrivia}>
-                    <Text tyle={styles.titleText}> Get Started </Text>
-                </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={styles.imgContainerGreen}
+                        onPress = {this.props.setResponseTrue}>
+                        <Image source={require('../assets/yesmark.jpg')} style={{height:30, width:30}}/>
+                        <Text style={styles.titleText}> TRUE </Text>
+                    </TouchableOpacity>
+                </View>        
             </View>
         )
     }
 }
 
 const styles = StyleSheet.create({
-    body: {
+    container: {
         width: '100%',
         height: '20%',
-        flexDirection: 'column',
         backgroundColor: 'white',
         alignItems: 'center',
-        justifyContent: 'center',
+        margin: 10,
     },
-    textContainer: {
+    body: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+    },
+    imgContainerRed: {
+        height: 85,
+        width: 85,
+        marginRight: 20,
         borderColor: '#F63B42',
-        borderRadius: 10,
-        borderWidth: 2,
-        padding: 10,
-        paddingLeft: 40,
-        paddingRight: 40
+        borderRadius: 85/2,//
+        borderWidth: 3,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    imgContainerGreen: {
+        height: 85,
+        width: 85,
+        marginLeft: 20,
+        borderColor: 'green',
+        borderRadius: 85/2,
+        borderWidth: 3,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     titleText:{
-        paddingLeft: 10,
         color: 'black',
-        fontSize: 40,
+        paddingTop: 1,
+        fontSize: 15,
         fontStyle: 'italic',
         fontWeight: '900',
         textTransform: 'uppercase',     
