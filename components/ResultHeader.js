@@ -6,8 +6,8 @@ const ResultHeader = (props) => {
  //
     return (
         <View style ={styles.header}>
-                <Text style={styles.titleText}> {props.score} </Text>
-            
+            <Text> You scored </Text>
+            <Text style={styles.titleText}> {props.score} / 10 </Text>        
         </View>
     )
 }
@@ -15,20 +15,20 @@ const ResultHeader = (props) => {
 const styles = StyleSheet.create({
     header: {
         width: '100%',
-        flexDirection: 'row',
-        height: 45,
-        backgroundColor: '#F63B42',
+        flexDirection: 'column',
+        height: 95,
+        backgroundColor: 'white',
         borderBottomWidth: 1,
         borderBottomColor: '#D1D1D1',
         elevation: 3,
         paddingHorizontal: 15,
         alignItems: 'center',
- //       justifyContent: 'flex-start'
+        justifyContent: 'center'
     },
     titleText:{
-        color: 'white',
+        color: 'black',
         paddingLeft: 5,
-        fontSize: 20,
+        fontSize: 40,
         fontStyle: 'italic',
         fontWeight: '900',
         textTransform: 'uppercase',     
