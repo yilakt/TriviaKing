@@ -1,16 +1,15 @@
 ﻿import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import Header from '../components/Header'
+import HomeBody from '../components/HomeBody'
+import StatusBar from '../components/StatusBar'
 
 export default class HomeScreen extends Component {
     render() {
-        const statusBar = <View style={styles.statusBar}></View>
-
     return (
       <View style={styles.container}>
-            {statusBar}
-            <Header 
-                  title="TriviaKing"
+            <StatusBar/>
+            <HomeBody 
+                  title="TRIVIA KING"
             />
        
       </View>
@@ -25,10 +24,6 @@ const styles = StyleSheet.create({
   //  alignItems: 'center',
     backgroundColor: 'white',
     },
- statusBar: {
-    backgroundColor: '#F63B42', //#7fffd4
-    height: 30
-  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
