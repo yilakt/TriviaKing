@@ -1,15 +1,23 @@
 ﻿import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import QuizBodyText from './QuizBodyText'
 
-export default class QuizBody extends React.Component {
+
+export default class QuizAction extends React.Component {
     //
     render(){
         return (
             <View style ={styles.body}> 
-                <QuizBodyText
-                    questionSet = {{question:'HELLO LUKE?'}}/>
+                <TouchableOpacity 
+                    style={styles.textContainer}
+                    onPress = {this.props.startTrivia}>
+                    <Image source={require('../assets/logo_triviaKing.png')} style={{height: 30, width:30}}/>
+                    </TouchableOpacity>
+                <TouchableOpacity 
+                    style={styles.textContainer}
+                    onPress = {this.props.startTrivia}>
+                    <Text tyle={styles.titleText}> Get Started </Text>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -17,14 +25,10 @@ export default class QuizBody extends React.Component {
 
 const styles = StyleSheet.create({
     body: {
-        width: '95%',
+        width: '100%',
+        height: '20%',
         flexDirection: 'column',
-        height: '70%',
-        margin: 10,
         backgroundColor: 'white',
-        borderWidth: 1,
-        borderColor: '#F63B42',
-        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },

@@ -6,8 +6,7 @@ const HomeBody = (props) => {
  //
     return (
         <View style ={styles.body}>
-            <Image source={require('../assets/logo_triviaKing.png')} style={{height: 70, width:70}}/> 
-            <Text style={styles.titleText}> {props.title} </Text>
+            <Text style={{fontColor:'black'}}>QUESTION</Text>
         </View>
     )
 }

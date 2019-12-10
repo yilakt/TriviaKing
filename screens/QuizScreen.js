@@ -3,6 +3,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import StatusBar from '../components/StatusBar'
 import Header from '../components/Header'
 import QuizBody from '../components/QuizBody'
+import QuizAction from '../components/QuizAction'
 
 export default class QuizScreen extends Component {
     render() {
@@ -14,6 +15,7 @@ export default class QuizScreen extends Component {
                   title="TRIVIA KING"
             />
             <QuizBody
+
             />
       </View>
     );
