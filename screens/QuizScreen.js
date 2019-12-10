@@ -29,8 +29,16 @@ export default class QuizScreen extends Component {
         }
     }
 
+    //sets responses
+    setResponseTrue() {
+
+    }
+    setResponseFalse() {
+
+    }
     render() {
         let questions = this.state.questions
+        console.log(questions)
         return (
           <View style={styles.container}>
                 <StatusBar/>
@@ -38,10 +46,11 @@ export default class QuizScreen extends Component {
                   title="TRIVIA KING"
                 />
                 <QuizBody
-                    questionSet= {questions[0]}
+                    questionSet= {{category:'test',title:'titlelee'}}
                 />
                 <QuizAction
-                
+                    setResponseTrue= {() => this.setResponseTrue}
+                    setResponseFalse = {() => this.setResponseFalse}
                 />
           </View>
         );

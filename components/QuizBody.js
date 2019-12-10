@@ -19,14 +19,14 @@ export default class QuizBody extends React.Component {
 
 const styles = StyleSheet.create({
     body: {
-        width: '95%',
+        width: '93%',
         flexDirection: 'column',
         height: '70%',
         margin: 10,
-        backgroundColor: 'white',
+        backgroundColor: '#DDD',
         borderWidth: 1,
         borderColor: '#F63B42',
-        borderRadius: 10,
+        borderRadius: 18,
         alignItems: 'center',
         justifyContent: 'center',
     },
