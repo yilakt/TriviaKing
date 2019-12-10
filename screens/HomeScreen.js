@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import Header from '../components/Header'
+
 export default class HomeScreen extends Component {
     render() {
         const statusBar = <View style={styles.statusBar}></View>
@@ -9,12 +10,9 @@ export default class HomeScreen extends Component {
       <View style={styles.container}>
             {statusBar}
             <Header 
-                  title="flavr"
-                  signOutUser= { () => this.signOutUser()}
+                  title="TriviaKing"
             />
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+       
       </View>
     );
   }
