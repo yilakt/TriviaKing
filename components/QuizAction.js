@@ -11,13 +11,13 @@ export default class QuizAction extends React.Component {
                 <View style={styles.body}>
                     <TouchableOpacity 
                         style={styles.imgContainerRed}
-                        onPress = {this.props.setResponseFalse}>
+                        onPress = {this.props.checkResponseFalse}>
                         <Image source={require('../assets/xmark.png')} style={{height: 30, width:30}}/>
                         <Text style={styles.titleText}> FALSE </Text>
                     </TouchableOpacity>
                     <TouchableOpacity 
                         style={styles.imgContainerGreen}
-                        onPress = {this.props.setResponseTrue}>
+                        onPress = {this.props.checkResponseTrue}>
                         <Image source={require('../assets/yesmark.jpg')} style={{height:30, width:30}}/>
                         <Text style={styles.titleText}> TRUE </Text>
                     </TouchableOpacity>

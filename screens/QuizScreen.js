@@ -1,44 +1,82 @@
 ﻿import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-import * as firebase from 'firebase';
 import StatusBar from '../components/StatusBar'
 import Header from '../components/Header'
 import QuizBody from '../components/QuizBody'
 import QuizAction from '../components/QuizAction'
 
 export default class QuizScreen extends Component {
-    // Fetching questoins from firebase
+    // gets questions from nav
     componentDidMount() {
-        let questionsRef = firebase.database().ref('/results')
-        questionsRef.on('value', this.gotData, this.errData); // get database data for products
+        let { navigation } = this.props;
+        let questions = navigation.getParam('questions');
+        this.setQuestions(questions);
     }
 
-    // interprating & saving questions or logs error
-    gotData = (data) => {
-     let questions = data.val()
-     this.setState({questions})
-    }
-    errData(err){
-     console.log(err)
+    // saves questions 
+    setQuestions(questions) {
+        this.setState({questions})
     }
 
+    //constructor
     constructor(props) {
         super(props)
         this.state = {
-            questions:{}
+            response: true,
+            index: 0,
+            questions:[],
+            score: 0,
+            totalQuestions: 10,
+        }
+    }
+    
+    //checks true responses
+    checkResponseTrue = () => {
+        let response = true
+        let currentIndex = this.state.index
+        let nextIndex = currentIndex + 1
+        let correctResponse = this.state.questions[currentIndex].correct_answer    
+        let score = this.state.score
+        correctResponse = correctResponse.toLowerCase()
+        correctResponse = (correctResponse === "true")
+
+        if (response === correctResponse) {
+            score = score + 1
+            this.setState({score, index:nextIndex})
+        }
+        else {
+          this.setState({
+            index:nextIndex 
+        })
         }
     }
 
-    //sets responses
-    setResponseTrue() {
+    //checks false responses
+    checkResponseFalse = () => {
+        let response = false
+        let currentIndex = this.state.index
+        let nextIndex = currentIndex + 1
+        let correctResponse = this.state.questions[currentIndex].correct_answer    
+        let score = this.state.score
+        correctResponse = correctResponse.toLowerCase()
+        correctResponse = (correctResponse === "true")
 
+        if (response === correctResponse) {
+            score = score + 1
+            this.setState({score, index:nextIndex})
+        }
+        else {
+          this.setState({
+            index:nextIndex 
+        })
+        }
     }
-    setResponseFalse() {
 
-    }
     render() {
+        console.log(this.state.index)
+        if(this.state.index > 2){ this.props.navigation.navigate('ResultScreen',{score:this.state.score})}
+
         let questions = this.state.questions
-        console.log(questions)
         return (
           <View style={styles.container}>
                 <StatusBar/>
@@ -46,12 +84,13 @@ export default class QuizScreen extends Component {
                   title="TRIVIA KING"
                 />
                 <QuizBody
-                    questionSet= {{category:'test',title:'titlelee'}}
+                    question= {questions[this.state.index]}
                 />
                 <QuizAction
-                    setResponseTrue= {() => this.setResponseTrue}
-                    setResponseFalse = {() => this.setResponseFalse}
-                />
+                    response = {response => this.setState({response:true})}
+                    checkResponseTrue= {() => this.checkResponseTrue()}
+                    checkResponseFalse= {() => this.checkResponseFalse()}
+                /> 
           </View>
         );
   }

@@ -3,11 +3,36 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import HomeBody from '../components/HomeBody'
 import StatusBar from '../components/StatusBar'
 import HomeAction from '../components/HomeAction';
+import * as firebase from 'firebase';
+
 
 export default class HomeScreen extends React.Component {
+    // Gets questions
+    componentDidMount() {
+        let questionsRef = firebase.database().ref('/results')
+        questionsRef.on('value', this.gotData, this.errData); // get database data for products
+    }
 
+    // gets value of references & saves  questions or logs error
+    gotData = (data) => {
+     let questions = data.val()
+     this.setState({questions})
+    }
+    errData(err){
+     console.log(err)
+    }
+
+    //constructor
+    constructor(props) {
+        super(props)
+        this.state = {
+            questions:[]
+        }
+    }
+    //
     startTrivia() {
-        this.props.navigation.navigate('QuizScreen')
+        let questions = this.state.questions
+        this.props.navigation.navigate('QuizScreen', {questions})
     }
 
     render() {
@@ -15,7 +40,8 @@ export default class HomeScreen extends React.Component {
           <View style={styles.container}>
                 <StatusBar/>
                 <HomeBody 
-                      title="TRIVIA KING"
+                    title="TRIVIA KING"
+                    width= {this.state.width}
                 />
                 <HomeAction 
                     startTrivia={ () => this.startTrivia()}

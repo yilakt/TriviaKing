@@ -1,21 +1,22 @@
 ﻿import React from 'react';
 import {StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import QuizBodyText from './QuizBodyText'
 
 export default class QuizBody extends React.Component {
     //
     render(){
+        let question = this.props.question
+
         return (
             <View style ={styles.body}> 
                 <View style ={styles.textContainer}> 
-                    <Text style={styles.categoryText}>{this.props.questionSet.category}</Text>
-                    <Text style={styles.titleText}>{this.props.questionSet.question}</Text>
+                    <Text style={styles.categoryText}>{question != undefined && question.category}</Text>
+                    <Text style={styles.titleText}>{question != undefined && question.question}</Text>
                 </View>
             </View>
         )
     }
-}
+}//
 
 const styles = StyleSheet.create({
     body: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         alignItems: 'center',
         justifyContent: 'center',
-    },
+    },//
      textContainer: {
         padding: 10,
         paddingLeft: 40,

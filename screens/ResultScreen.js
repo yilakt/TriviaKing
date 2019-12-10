@@ -1,8 +1,22 @@
 ﻿import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-
+import Header from '../components/Header'
+import ResultHeader from '../components/ResultHeader'
 
 export default class ResultScreen extends Component {
+
+    componentDidMount() {
+        let { navigation } = this.props;
+        let score = navigation.getParam('score');
+        this.setState({score});
+    }
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            score: 0
+        }
+    }
     render() {
         const statusBar = <View style={styles.statusBar}></View>
 
@@ -10,12 +24,11 @@ export default class ResultScreen extends Component {
       <View style={styles.container}>
             {statusBar}
             <Header 
-                  title="flavr"
-                  signOutUser= { () => this.signOutUser()}
+              title="TRIVIA KING"
             />
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+            <ResultHeader
+               score= {this.state.score}            
+            />
       </View>
     );
   }
@@ -31,15 +44,5 @@ const styles = StyleSheet.create({
  statusBar: {
     backgroundColor: '#F63B42', //#7fffd4
     height: 30
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
