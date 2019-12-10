@@ -7,7 +7,7 @@ const Header = (props) => {
     return (
         <View style ={styles.header}>
 
-                <Image source={require('../assets/logo_triviaKing.png')} style={{height: 24, width:24}}>
+                <Image source={require('../assets/logo_triviaKing.png')} style={{height: 40, width:40}}>
                 </Image>
                 <Text style={styles.titleText}> {props.title} </Text>
             
@@ -17,7 +17,6 @@ const Header = (props) => {
 
 const styles = StyleSheet.create({
     header: {
-        color:'blue',
         width: '100%',
         flexDirection: 'row',
         height: 55,
@@ -27,10 +26,9 @@ const styles = StyleSheet.create({
         elevation: 3,
         paddingHorizontal: 15,
         alignItems: 'center',
-        justifyContent: 'flex-start'
+ //       justifyContent: 'flex-start'
     },
     titleText:{
-        paddingLeft: 10,
         color: 'white',
         fontSize: 20,
         fontStyle: 'italic',

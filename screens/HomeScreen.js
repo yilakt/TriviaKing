@@ -1,22 +1,30 @@
-﻿import React, { Component } from 'react';
+﻿import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import HomeBody from '../components/HomeBody'
 import StatusBar from '../components/StatusBar'
+import HomeAction from '../components/HomeAction';
 
-export default class HomeScreen extends Component {
+export default class HomeScreen extends React.Component {
+
+    startTrivia() {
+        this.props.navigation.navigate('QuizScreen')
+    }
+
     render() {
-    return (
-      <View style={styles.container}>
-            <StatusBar/>
-            <HomeBody 
-                  title="TRIVIA KING"
-            />
-       
-      </View>
+        return (
+          <View style={styles.container}>
+                <StatusBar/>
+                <HomeBody 
+                      title="TRIVIA KING"
+                />
+                <HomeAction 
+                    startTrivia={ () => this.startTrivia()}
+                />
+          </View>
     );
   }
 }
-
+// d
 const styles = StyleSheet.create({
   container: {
     flex: 1,

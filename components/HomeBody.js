@@ -1,12 +1,12 @@
 ﻿import React from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import {StyleSheet, Text, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const HomeBody = (props) => {
  //
     return (
         <View style ={styles.body}>
-            <Image source={require('../assets/logo_triviaKing.png')} style={{height: 40, width:40}}/> 
+            <Image source={require('../assets/logo_triviaKing.png')} style={{height: 70, width:70}}/> 
             <Text style={styles.titleText}> {props.title} </Text>
         </View>
     )
