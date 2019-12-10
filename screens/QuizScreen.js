@@ -2,6 +2,7 @@
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import StatusBar from '../components/StatusBar'
 import Header from '../components/Header'
+import QuizBody from '../components/QuizBody'
 
 export default class QuizScreen extends Component {
     render() {
@@ -11,7 +12,8 @@ export default class QuizScreen extends Component {
             <StatusBar/>
             <Header 
                   title="TRIVIA KING"
-                  signOutUser= { () => this.signOutUser()}
+            />
+            <QuizBody
             />
       </View>
     );
