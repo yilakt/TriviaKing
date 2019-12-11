@@ -27,6 +27,7 @@ export default class QuizScreen extends Component {
             questions:[],
             score: 0,
             totalQuestions: 10,
+            results:[]
         }
     }
     
@@ -35,19 +36,24 @@ export default class QuizScreen extends Component {
         let response = true
         let currentIndex = this.state.index
         let nextIndex = currentIndex + 1
+        let currentQuestionSet = this.state.questions[currentIndex]
         let correctResponse = this.state.questions[currentIndex].correct_answer    
         let score = this.state.score
+        let results = this.state.results
+
         correctResponse = correctResponse.toLowerCase()
         correctResponse = (correctResponse === "true")
 
-        if (response === correctResponse) {
+        if (response === correctResponse) { // right answer
             score = score + 1
-            this.setState({score, index:nextIndex})
+            result = {answer:'right',questionSet:currentQuestionSet}
+            results.push(result)
+            this.setState({score, index:nextIndex, results})
         }
-        else {
-          this.setState({
-            index:nextIndex 
-        })
+        else { // wrong answer
+          result = {answer:'wrong',questionSet:currentQuestionSet}
+          results.push(result)
+          this.setState({ index:nextIndex, results })
         }
     }
 
@@ -56,38 +62,49 @@ export default class QuizScreen extends Component {
         let response = false
         let currentIndex = this.state.index
         let nextIndex = currentIndex + 1
+        let currentQuestionSet = this.state.questions[currentIndex]
         let correctResponse = this.state.questions[currentIndex].correct_answer    
         let score = this.state.score
+        let result = {}
+        let results = this.state.results
         correctResponse = correctResponse.toLowerCase()
         correctResponse = (correctResponse === "true")
 
-        if (response === correctResponse) {
+        if (response === correctResponse) { // righ answer
             score = score + 1
-            this.setState({score, index:nextIndex})
+            result = {answer:'right',questionSet:currentQuestionSet}
+            results.push(result)
+            this.setState({score, index:nextIndex, results})
         }
-        else {
-          this.setState({
-            index:nextIndex 
-        })
+        else { // wrong answer
+          result = {answer:'wrong',questionSet:currentQuestionSet}
+          results.push(result)
+          this.setState({ index:nextIndex , results })
         }
     }
 
+    switchScreen() {
+        this.props.navigation.navigate('ResultScreen',{results:this.state.results,score:this.state.score})
+    }
+
     render() {
-        console.log(this.state.index)
-        if(this.state.index > 2){ this.props.navigation.navigate('ResultScreen',{score:this.state.score})}
+        if(this.state.index > 9){this.switchScreen()}
 
         let questions = this.state.questions
+        let question= {}
+        if(questions != undefined){
+            question= questions[this.state.index]
+        }
         return (
           <View style={styles.container}>
                 <StatusBar/>
                 <Header 
-                  title="TRIVIA KING"
+                  title={question != undefined && question.category}
                 />
                 <QuizBody
                     question= {questions[this.state.index]}
                 />
                 <QuizAction
-                    response = {response => this.setState({response:true})}
                     checkResponseTrue= {() => this.checkResponseTrue()}
                     checkResponseFalse= {() => this.checkResponseFalse()}
                 /> 
@@ -99,8 +116,6 @@ export default class QuizScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  //  justifyContent: 'center',
-  //  alignItems: 'center',
     backgroundColor: 'white',
     },
  statusBar: {

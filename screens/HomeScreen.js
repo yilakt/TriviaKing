@@ -1,10 +1,9 @@
 ﻿import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, YellowBox } from 'react-native';
 import HomeBody from '../components/HomeBody'
 import StatusBar from '../components/StatusBar'
 import HomeAction from '../components/HomeAction';
 import * as firebase from 'firebase';
-
 
 export default class HomeScreen extends React.Component {
     // Gets questions
@@ -36,6 +35,7 @@ export default class HomeScreen extends React.Component {
     }
 
     render() {
+
         return (
           <View style={styles.container}>
                 <StatusBar/>

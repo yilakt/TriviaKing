@@ -2,14 +2,15 @@
 import {StyleSheet, Text, View, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const HomeBody = (props) => {
- //
+export default class HomeBody extends React.Component {
+    render(){
     return (
         <View style ={styles.body}>
             <Image source={require('../assets/logo_triviaKing.png')} style={{height: 70, width:70}}></Image> 
-            <Text style={styles.titleText}> {props.title} </Text>
+            <Text style={styles.titleText}> {this.props.title} </Text>
         </View>
-    )
+        )
+    }
 }
 
 const styles = StyleSheet.create({
@@ -32,7 +33,6 @@ const styles = StyleSheet.create({
         fontStyle: 'italic',
         fontWeight: '900',
         textTransform: 'uppercase',     
-    }
+    },
 });
 
-export default HomeBody ;

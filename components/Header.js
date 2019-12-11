@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity, AsyncStorage } from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const Header = (props) => {
@@ -7,9 +7,11 @@ const Header = (props) => {
     return (
         <View style ={styles.header}>
 
-                <Image source={require('../assets/logo_triviaKing.png')} style={{height: 28, width:28}}>
-                </Image>
-                <Text style={styles.titleText}> {props.title} </Text>
+            <Image source={require('../assets/logo_triviaKing.png')} style={{height: 28, width:28}}>
+            </Image>
+            <Text
+                adjustsFontSizeToFit
+                style={styles.titleText}> {props.title} </Text>
             
         </View>
     )
@@ -31,10 +33,11 @@ const styles = StyleSheet.create({
     titleText:{
         color: 'white',
         paddingLeft: 5,
-        fontSize: 20,
+        fontSize: 18,
         fontStyle: 'italic',
         fontWeight: '900',
-        textTransform: 'uppercase',     
+        textTransform: 'uppercase',  
+        flexWrap:'wrap'
     }
 });
 
