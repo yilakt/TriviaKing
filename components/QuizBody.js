@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     titleText:{
         paddingLeft: 10,
         color: '#F63B42',
-        fontSize: 25,
+        fontSize: 20,
         fontStyle: 'italic',
-        fontWeight: '900',
+        fontWeight: '600',
         textTransform: 'uppercase',     
     },
     categoryText:{
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 18,
         fontStyle: 'italic',
-        fontWeight: '900',
+        fontWeight: '500',
         textTransform: 'uppercase', 
         marginBottom: 10
     }
